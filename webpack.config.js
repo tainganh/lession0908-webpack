@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-const HtmlWebpackPlugin= require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const VENDOR_LIBS = [
   "axios",
   "bootstrap",
@@ -12,12 +12,23 @@ const VENDOR_LIBS = [
   "redux",
   "redux-thunk"
 ];
-
+const devServer = {
+  port: 2205,
+  open: true,
+  disableHostCheck: true,
+  historyApiFallback: true,
+  overlay: true,
+  stats: "minimal",
+  inline: true,
+  compress: true,
+  contentBase: "/"
+};
 module.exports = {
   entry: {
     bundle: "./src/index.js",
     vendor: VENDOR_LIBS
   },
+  mode: "development",
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name].[chunkhash].js"
@@ -33,6 +44,7 @@ module.exports = {
       }
     }
   },
+  performance: { hints: false },
   module: {
     rules: [
       {
@@ -63,8 +75,9 @@ module.exports = {
       Popper: ["popper.js", "default"]
     }),
     new HtmlWebpackPlugin({
-      template :'src/index.html' // vao file dist tao mot index.html tu src/index.html va ipmort bundle va vedor vao
+      template: "src/index.html" // vao file dist tao mot index.html tu src/index.html va ipmort bundle va vedor vao
     })
-  ]
+  ],
+  devServer
 };
 //rimraf: clean  thu muc dist roi chay cau lenh webpack

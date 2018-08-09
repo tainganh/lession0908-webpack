@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 class App extends Component {
     render() {
+        console.log('render1');
         return (
             <HashRouter>
                 <div>
