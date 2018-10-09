@@ -3,20 +3,25 @@ import ProductList from './../../components/ProductList/ProductList';
 import ProductItem from './../../components/ProductItem/ProductItem';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { actCallApiToFetchProducts, actCallApiToDeleteProduct } from './../../actions/index';
+// import apiCaller from './../../utils/apiCaller';
+import { actCallApiToFetchProducts, actCallApiToDeleteProduct ,requestApiData} from './../../actions/index';
 class ProductListPage extends Component {
-
+    state = { loading: false };
     //middleware trong redux la se nam giua reducers va dispatch actions
     //vi tri hoat dong cua no la truoc khi reducers nhan duoc actions va sau khi action da duoc dispatch
     //Async action : API request
     //redux-thunk dung de tri hoan viec dispatch boi vi fetch du lieu tu server ve se lau ( fetch xong moi dispatch)
+    
     componentDidMount() {
+        this.setState({ loading: true });
         this.props.fetchProducts();
+       
         // apiCaller('products', 'GET', null).then(res => {
         //     // this.setState({
         //     //     products: res.data
         //     // })
-        //     this.props.fetchProducts(res.data);
+        //     this.props.fetchProducts1(res.data);
+        //     this.setState({ loading: false });
         // });
     }
     onDelete = (id) => {
@@ -40,10 +45,10 @@ class ProductListPage extends Component {
         var { products } = this.props;
         return (
             <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <Link to="/product/add" className="btn btn-info mb-10">
+                <Link to="/product/add" className="btn btn-info mb-10" >
                     Them San Pham
                   </Link>
-                <ProductList>
+                <ProductList  loading={this.state.loading}>
                     {this.showProducts(products)}
                 </ProductList>
             </div>
@@ -75,6 +80,9 @@ const mapDispatchToProps = (dispatch, props) => {
     return {
         fetchProducts: () => {
             dispatch(actCallApiToFetchProducts())
+        },
+        fetchProducts1: () =>{
+            dispatch(requestApiData())
         },
         onDeleteProduct: (id) => {
             dispatch(actCallApiToDeleteProduct(id))

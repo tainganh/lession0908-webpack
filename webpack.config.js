@@ -10,7 +10,8 @@ const VENDOR_LIBS = [
   "react-redux",
   "react-router-dom",
   "redux",
-  "redux-thunk"
+  "redux-thunk",
+  "redux-saga"
 ];
 const devServer = {
   port: 2205,

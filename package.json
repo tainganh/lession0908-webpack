@@ -7,12 +7,14 @@
     "clean": "rimraf dist",
     "build": "npm run clean && webpack --mode production",
     "server": "webpack-dev-server",
-    "start":  "npm run server"
+    "start": "npm run server"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
+    "axios-progress-bar": "^1.2.0",
+    "babel-polyfill": "^6.26.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
     "react": "^16.4.1",
@@ -20,7 +22,9 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0",
+    "regenerator-runtime": "^0.12.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -38,6 +42,5 @@
     "webpack": "^4.16.3",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
-    
   }
 }

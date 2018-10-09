@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 
 class ProductList extends Component {
+   
+
     render() {
         return (
             <div className="panel panel-primary">
@@ -13,7 +15,6 @@ class ProductList extends Component {
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                
                                 <th>TEN SP</th>
                                 <th>GIA</th>
                                 <th>TRANG THAI</th>
@@ -21,6 +22,7 @@ class ProductList extends Component {
                             </tr>
                         </thead>
                         <tbody>
+                            
                           {this.props.children}
                         </tbody>
                     </table>

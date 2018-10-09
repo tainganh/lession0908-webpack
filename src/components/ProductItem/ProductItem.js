@@ -12,6 +12,7 @@ class ProductItem extends Component {
         var statusname= product.status ? 'con hang' :'het hang';
         var statusClass= product.status ? 'warning' :'success';
         return (
+           
             <tr>
                 <td>{index+1}</td>
                 
@@ -22,8 +23,7 @@ class ProductItem extends Component {
                 </td>
                 <td>
                     <Link to={`product/${product._id}/update`} 
-                          className="btn btn-success mr-10"
-                          
+                          className="btn btn-success mr-10"          
                     >
                         Sua 
                     </Link>
